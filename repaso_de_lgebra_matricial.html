@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Repaso de Álgebra Matricial | PID </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="MBM" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.8.1 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+<body class="exe-web-site" id="exe-node-2"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">Matemáticas útiles: conceptos y aplicaciones</div></header>
+<nav id="siteNav">
+<ul>
+   <li id="active"><a href="index.html" class="active daddy main-node">Inicio</a></li>
+   <li><a href="imagen_circunferencia.html" class="no-ch">Imagen de una Circunferencia por una Aplicación Lineal</a></li>
+   <li><a href="curvas.html" class="no-ch">Curvas paramétricas en el plano</a></li>
+   <li><a href="svd.html" class="no-ch">Descomposición en valores singulares</a></li>
+   <li><a href="mnimos_cuadrados_ordinarios2.html" class="no-ch">Mínimos Cuadrados Ordinarios</a></li>
+   <ul>
+   		<li><a href="Ejemplo_MMCC.html" class="no-ch">Ejemplo: Aplicación de Mínimos Cuadrados Ordinarios</a></li>
+   </ul>
+   <li><a href="repaso_de_lgebra_matricial.html" class="no-ch">Repaso de Álgebra Matricial</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="introduccin.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="mnimos_cuadrados_ordinarios.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Repaso de Álgebra Matricial</h1></header>
+
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Conceptos Básicos</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p id="matriz_simetrica">Una matriz \(\mathbf{A}\) es <strong>simétrica</strong> si \(\mathbf{A}^{T}=\mathbf{A}\).</p>
+</li>
+<li><p id="matriz_invertible">Una matriz \(\mathbf{A}\) es <strong>invertible</strong> si existe una matriz \(\mathbf{A}^{-1}\) tal que \(\mathbf{A}^{-1}\mathbf{A}=\mathbf{I}\)  y \(\mathbf{A}\mathbf{A}^{-1}=\mathbf{I}\).</p>
+<p>Si \(\mathbf{A}^{-1}\) existe es única. También se dice:</p>
+<ul>
+<li><p id="matriz_regular"><strong>Matriz regular</strong>: una matriz cuadrada que tiene inversa.</p>
+</li>
+<li><p id="matriz_singular"><strong>Matriz singular</strong>: una matriz que no tiene inversa (su determinante es cero).</p>
+</li>
+</ul>
+</li>
+<li><p id="matriz_ortogonal">Se denomina <strong>matriz ortogonal</strong> a toda matriz \(\mathbf{Q}\) real cuadrada no-singular cuya inversa coincide con su traspuesta:, esto es \(\mathbf{Q}^{-1}=\mathbf{Q}^{T}\).</p>
+</li>
+<li><p id="traza">La <strong>traza</strong> de una matriz es la suma de los elementos de su diagonal.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-traspuesta-e-inversa-">Propiedades (matrices traspuesta e inversa)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>\(( \mathbf{A}^{T} )^{T}=\mathbf{A}\)</p>
+</li>
+<li><p>\(( \mathbf{A}^{-1} )^{-1}=\mathbf{A}\)</p>
+</li>
+<li><p>\(( \mathbf{A}\mathbf{B} )^{T}=\mathbf{B}^{T}\mathbf{A}^{T}\)</p>
+</li>
+<li><p>\(( \mathbf{A}^{T} )^{-1}=( \mathbf{A}^{-1} )^{T}\)</p>
+</li>
+<li><p>\(\mathbf{A}^{T}\mathbf{A}\) y \(\mathbf{A}\mathbf{A}^{T}\) son simétricas.</p>
+</li>
+<li><p>Si \(\mathbf{A}\) y \(\mathbf{B}\) son no singulares, entonces \(( \mathbf{A}\mathbf{B} )^{-1}=\mathbf{B}^{-1}\mathbf{A}^{-1}\).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-determinante-">Propiedades (determinante de una matriz)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>El determinante de una matriz diagonal es igual al producto de sus elementos diagonales.</p>
+</li>
+<li><p>Si \(\mathbf{A}\) y \(\mathbf{B}\) son matrices de dimensión \(n \times n\) entonces \(\text{det}(\mathbf{A}\mathbf{B})=\text{det}(\mathbf{B}\mathbf{A})=\text{det}\mathbf{A}\cdot \text{det}\mathbf{B}\).</p>
+</li>
+<li><p>Si \(\mathbf{A}\) es singular entonces \(\text{det}(\mathbf{A})=0\).</p>
+</li>
+<li><p>Si \(\mathbf{C}\) es una matriz ortogonal entonces \(\text{det}(\mathbf{C})=\pm 1\).</p>
+</li>
+<li><p>Si \(\mathbf{C}\) es una matriz ortogonal entonces \(\text{det}(\mathbf{C}^{T}\mathbf{A}\mathbf{C})=\pm \text{det}(\mathbf{A})\).</p>
+</li>
+<li><p>El determinante de una matriz definida positiva es positivo.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-traza-">Propiedades (traza de una matriz)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>\(\text{traza}(\mathbf{A}^{T})=\text{traza}(\mathbf{A})\).</p>
+</li>
+<li><p>\(\text{traza}(k\mathbf{A})=k\text{traza}(\mathbf{A})\).</p>
+</li>
+<li><p>\(\text{traza}(\mathbf{A}+\mathbf{B})=\text{traza}(\mathbf{A})+\text{traza}(\mathbf{B})\).</p>
+</li>
+<li><p>\(\text{traza}(\mathbf{A}\mathbf{B})=\text{traza}(\mathbf{B}\mathbf{A})\).</p>
+</li>
+<li><p>\(\text{traza}(\mathbf{A}\mathbf{B}\mathbf{C})=\text{traza}(\mathbf{C}\mathbf{A}\mathbf{B})=\text{traza}(\mathbf{B}\mathbf{A}\mathbf{C})\).</p>
+</li>
+<li><p>\(\text{traza}(\mathbf{I}_{n})=n\).</p>
+</li>
+<li><p>Si \(\mathbf{C}\) es una matriz ortogonal entonces \(\text{traza}(\mathbf{C}^{T}\mathbf{A}\mathbf{C})=\text{traza}(\mathbf{A})\).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="espacio-columna-de-una-matriz">Espacio columna de una matriz</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Sea \(\mathbb{R}^{m\times n}\) el conjunto de las matrices con \(m\) filas y \(n\) columnas y \(\mathbf{A} \in \mathbf{R}^{m\times n}\) </p>
+<p>$$
+\mathbf{A}=
+\begin{pmatrix}
+\mathbf{a}_{1} &amp; \ldots &amp; \mathbf{a}_{n}
+\end{pmatrix}
+= \begin{pmatrix}
+a_{11} &amp; \ldots &amp; a_{1n} \\
+\vdots &amp; &amp; \vdots \\
+a_{m1} &amp; \ldots &amp; a_{mn}
+\end{pmatrix}
+$$</p>
+<p>donde  \(\mathbf{a}_i \in \mathbb{R}^{m}, \quad i = 1 \ldots n,\) son vectores columna (columnas de la matriz \(\mathbf{A}\))</p>
+<p>$$
+\mathbf{a}_{1}=\begin{pmatrix}a_{11}\\ \vdots \\ a_{m1}\end{pmatrix}, \ldots, \mathbf{a}_{n}=\begin{pmatrix}a_{1n}\\ \vdots \\ a_{mn}\end{pmatrix}
+$$</p>
+<p>El <strong>espacio columna</strong> de la matriz \(\mathbf{A}\) es el conjunto de vectores \(\mathbf{y} \in \mathbb{R}^{m}\) que pueden escribirse como combinaciones lineales de las columnas de \(\mathbf{A}\):</p>
+<p>$$
+\mathbf{y}=\mathbf{a}_{1}x_{1}+\ldots +\mathbf{a}_{n}x_{n}\text{,} \quad \text{con } \; x_{1},\ldots,x_{n} \in \mathbb{R}
+$$</p>
+<p>Se denomina <strong>espacio fila</strong> de la matriz \(\mathbf{A}\) a \(\text{Col}(\mathbf{A}^{T})\).</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-espacio-columna-">Propiedades (espacio columna)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>El espacio columna de \(\mathbf{A}\) es el espacio generado por las columnas de \(\mathbf{A}\):</p>
+<p>
+\begin{align*}
+\text{Col}(\mathbf{A})&amp; = \left\{ \text{combinaciones lineales de las columnas de } \mathbf{A} \right\} = \\
+&amp;=\text{Gen}\left\{ \mathbf{a}_{1},\ldots,\mathbf{a}_{n}\right\} =\left\{ \mathbf{y} \in\mathbb{R}^{m} \text{: } \mathbf{y}=\mathbf{A}\mathbf{x} \text{, para algún } \mathbf{x} \in \mathbb{R}^{n} \right\} \\
+&amp;=\left\{ \mathbf{y} \in\mathbb{R}^{m} \text{: } \mathbf{y}=\mathbf{A}\mathbf{x} \text{ es compatible (o consistente)} \right\}
+\end{align*}</p>
+</li>
+<li><p>El espacio columna está definido explícitamente, ya que los vectores en Col\((\mathbf{A})\) se pueden construir (por medio de combinaciones lineales) a partir de columnas de \(\mathbf{A}\). Es decir, está caracterizado por las ecuaciones paramétricas:</p>
+<p>$$
+\left\{
+\begin{matrix}
+y_{1}=a_{11}x_{1}+\ldots +a_{1n}x_{n} \\
+\vdots \\
+y_{m}=a_{m1}x_{1}+\ldots +a_{mn}x_{n}
+\end{matrix}
+\right\}.
+$$</p>
+</li>
+<li><p>El espacio columna de la matriz \(\mathbf{A}\) es un subespacio de \(\mathbb{R}^{m}\) y el espacio fila de la matriz \(\mathbf{A}\) es un subespacio de \(\mathbb{R}^{n}\).</p>
+</li>
+<li><p>\(\text{Col}(\mathbf{A})=\mathbb{R}^{m} \Leftrightarrow \text{La ecuación } \mathbf{A}\mathbf{x}=\mathbf{y} \text{ tiene solución para cada } \mathbf{y} \in \mathbb{R}^{m}.\)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="teorema-caracterizaci-n-de-matrices-invertibles-en-t-rminos-de-su-espacio-columna-">Teorema (Caracterización de matrices invertibles en términos de su espacio columna)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Si \(\mathbf{A}\) es una matriz cuadrada de orden \(n\), entonces</p>
+<p>$$
+\text{La matriz } \mathbf{A} \text{ tiene inversa } \Leftrightarrow \text{Col}(\mathbf{A})=\mathbb{R}^{n}.
+$$</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="espacio-nulo-de-una-matriz">Espacio nulo de una matriz</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>El <strong>espacio nulo</strong> de la matriz \(\mathbf{A}\) es el conjunto de todas las soluciones posibles para la ecuación homogénea \(\mathbf{A}\mathbf{x}=\mathbf{0}\). Esto es,</p>
+<p>$$
+\text{Nul}(\mathbf{A})=\left\{ \mathbf{x} \in \mathbb{R}^{n} \text{: } \mathbf{A}\mathbf{x}=\mathbf{0} \right\}
+$$</p>
+<p>El espacio nulo de la matriz \(\mathbf{A}^{T}\) se denomina <strong>espacio nulo izquierdo</strong> de la matriz \(\mathbf{A}\).</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-espacio-nulo-">Propiedades (espacio nulo)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>El espacio nulo de \(\mathbf{A}\), Nul\((\mathbf{A})\), es un subespacio de \(\mathbb{R}^{n}\) y su espacio nulo izquierdo es un subespacio de \(\mathbb{R}^{m}\).</p>
+</li>
+<li><p>El espacio nulo está definido implícitamente, ya que está caracterizado por las ecuaciones implícitas</p>
+<p>$$
+\left\{
+\begin{matrix}
+a_{11}x_{1}+\ldots +a_{1n}x_{n}=0 \\
+\vdots \\
+a_{m1}x_{1}+\ldots +a_{mn}x_{n}=0
+\end{matrix}
+\right\}.
+$$</p>
+<li>Nul\((\mathbf{A})={\mathbf{0} }\) \(\Leftrightarrow \mathbf{A}\mathbf{x}=\mathbf{0}\) no tiene solución no trivial.</li>
+</li>
+<li><p>La dimensión de Nul\((\mathbf{A})\) es el número de variables libres en \(\mathbf{A}\mathbf{x}=\mathbf{0}\).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="teorema-caracterizaci-n-de-matrices-invertibles-en-t-rminos-de-su-espacio-nulo-">Teorema (Caracterización de matrices invertibles en términos de su espacio nulo)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Si \(\mathbf{A}\) es una matriz cuadrada de orden \(n\), entonces:</p>
+<p>$$
+\text{La matriz } \mathbf{A} \text{ tiene inversa } \Leftrightarrow \text{Nul}(\mathbf{A})=0.
+$$</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="dimensi-n-y-rango-de-una-matriz">Dimensión y rango de una matriz</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Una <strong>base</strong> para un subespacio \(S \in \mathbb{R}^{m}\) es un conjunto de vectores linealmente independientes en \(S\) que genera \(S\). </p>
+<p>La <strong>dimensión</strong> de un subespacio \(S\) (diferente de cero) es el número de vectores en cualquier base de \(S\).</p>
+<p>Recordar que:</p>
+<ul>
+<li><p>dim\(\left\{ 0 \right\}=0\)</p>
+</li>
+<li><p>dim\(\left\{ \mathbb{R}^{m} \right\}=m\)</p>
+</li>
+</ul>
+<p>El <strong>rango</strong> de una matriz \(\mathbf{A}\) es la dimensión de su espacio columna (máximo número de columnas linealmente independientes). Es decir,</p>
+<p>$$
+\text{rango}(\mathbf{A})=\text{dim}(\text{Col}(\mathbf{A}))=r
+$$</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedad-rango-de-una-matriz-">Propiedad (rango de una matriz)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>rango\((\mathbf{A})= \) rango\((\mathbf{A}^{T})=r\).</p>
+<p>Esto es, el espacio columna y el espacio fila tienen la misma dimensión:</p>
+<p>$$
+\text{dim} \underbrace{ ( \text{Col}(\mathbf{A}) )}_{\substack{\text{subespacio de } \mathbb{R}^{m} \\ \text{ generado por las } \\ n \text{ columnas de } \mathbf{A}}} = \text{dim} \underbrace{ ( \text{Col}(\mathbf{A}^{T}) )}_{\substack{ \text{subespacio de } \mathbb{R}^{n} \\ \text{ generado por las } m \text{ columnas de } \mathbf{A}^{T} \\ \text{i.e., las } m \text{ filas de } \mathbf{A} }}
+$$</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="teorema-caracterizaci-n-de-matrices-invertibles-en-t-rminos-de-su-rango-">Teorema (Caracterización de matrices invertibles en términos de su rango)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Si \(\mathbf{A}\) es una matriz cuadrada de orden \(n\), entonces: </p>
+<p>$$
+\text{La matriz } \(\mathbf{A}\) \text{ tiene inversa }  \(\Leftrightarrow \text{rango}(\mathbf{A}) = n\)$$</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="teorema-del-rango-">Teorema (del rango)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Sea \(\mathbf{A}\) una matriz, con \(\dim(\mathbf{A})=m \times n\). Se verifica:</p>
+<p>$$
+\underbrace{\dim ( \text{Col}(\mathbf{A}) }_{r} + \underbrace{\dim ( \text{Nul}(\mathbf{A}) }_{n-r}=n
+$$</p>
+<p>Esto es, rango\((\mathbf{A}) + \dim \left( \text{Nul}(\mathbf{A}) \right)=n\), lo que significa que el rango de una matriz es el orden del mayor menor no nulo.
+Equivalentemente:</p>
+<p>$$
+\underbrace{\dim ( \text{Fil}(\mathbf{A}) )}_{r} + \underbrace{\dim ( \text{Nul}(\mathbf{A}^{T}) )}_{m-r}=m
+$$</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-del-rango-">Propiedades (del rango)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>rango\((\mathbf{A}\mathbf{B})\leq\) rango\((\mathbf{A})\) rango\((\mathbf{B})\)</p>
+</li>
+<li><p>rango\((\mathbf{A}+\mathbf{B})\leq\) rango\((\mathbf{A})+\) rango\((\mathbf{B})\)</p>
+</li>
+<li><p>Si dim\((\mathbf{A})=n \times n\), entonces: rango\((\mathbf{A})&lt;n \Leftrightarrow \) det\((\mathbf{A})=0\) (los vectores fila (columnas) no son independientes).</p>
+</li>
+<li><p>Si rango\((\mathbf{A})=m\leq n\), entonces el número de vectores fila (columnas) linealmente independientes es \(m\).</p>
+</li>
+<li><p>Si \(\mathbf{A}\) es una matriz no singular, entonces rango\((\mathbf{A}\mathbf{B})=\) rango\((\mathbf{B}\mathbf{A})=\) rango\((\mathbf{B})\). Esto es, el rango de una matriz no varía si la multiplicamos por matrices invertibles.</p>
+</li>
+<li><p>Si \(\mathbf{A}\) y \(\mathbf{B}\) son matrices \(n \times n\) de rango \(r\) y \(s\), respectivamente, entonces rango\((\mathbf{A}\mathbf{B}) \leq r+s-n\).</p>
+</li>
+<li><p>rango\((\mathbf{A}\mathbf{A}^{T})=\) rango\((\mathbf{A}^{T}\mathbf{A})=\) rango\((\mathbf{A})\).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="producto-escalar-norma-distancia-y-ortogonalidad">Producto escalar, norma, distancia y ortogonalidad</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li>Se denomina  <strong>producto escalar</strong> de dos vectores} de dos vectores \(\mathbf{x}\), \(\mathbf{y}\in \mathbb{R}^{n}\) al número real</li>
+</ul>
+<p>$$
+\mathbf{x}\cdot \mathbf{y}=\mathbf{x}^{T}\mathbf{y}=\mathbf{y}^{T}\mathbf{x}=x_{1}y_{1}+\ldots+x_{n}y_{n} \in  \mathbb{R}
+$$</p>
+<ul>
+<li>Se denomina <strong>norma</strong> de un vector} de un vector \(\mathbf{x}\in \mathbb{R}^{n}\) al número real no negativo</li>
+</ul>
+<p>$$
+|\mathbf{x}|=\sqrt{|x_{1}|^{2}+\ldots+|x_{n}|^{2}}=\sqrt{\mathbf{x}^{T}\cdot \mathbf{x}} \geq 0
+$$</p>
+<ul>
+<li>Se denomina <strong>distancia</strong> entre dos vectores \(\mathbf{x}\), \(\mathbf{y}\in \mathbb{R}^{n}\) al número real no negativo</li>
+</ul>
+<p>$$
+d(\mathbf{x},\mathbf{y})=|\mathbf{x}-\mathbf{y}|
+$$</p>
+<ul>
+<li>Se dice que dos vectores \(\mathbf{x}\), \(\mathbf{y}\in \mathbb{R}^{n}\) son <strong>ortogonales</strong> (\(\mathbf{x}\perp \mathbf{y}\)) si</li>
+</ul>
+<p>$$
+\mathbf{x}\cdot \mathbf{y}=0
+$$</p>
+<ul>
+<li><p>Se dice que un conjunto de vectores \({\mathbf{v}_{1},\ldots,\mathbf{v}_{m}}\) de \(\mathbb{R}^{n}\) es un <strong>conjunto ortogonal</strong> si cada uno de los vectores \(\mathbf{v}_{k}\) es ortogonal a todos los demás.</p>
+</li>
+<li><p>Se dice que un conjunto de vectores \({\mathbf{v}_{1},\ldots,\mathbf{v}_{m}}\) de \(\mathbb{R}^{n}\) es un <strong>conjunto ortonormal</strong> si es un conjunto ortogonal y cada uno de los vectores \(\mathbf{v}_{k}\) tiene norma igual a uno.</p>
+</li>
+</ul>
+<p>$$
+\mathbf{v}_{i}\cdot \mathbf{v}_{j}=0 \text{, } i\neq j \text{; } \quad |\mathbf{v}_{1}|=\ldots=|\mathbf{v}_{m}|=1
+$$</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-producto-escalar-y-norma-">Propiedades (producto escalar y norma)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Sea \(\mathbf{x},\mathbf{y}\in \mathbb{R}^{n}\), \(\alpha \in \mathbb{R}\)</p>
+<ul>
+<li><p>\(|\mathbf{x}|=0 \Leftrightarrow \mathbf{x}=0\)</p>
+</li>
+<li><p>\(|\alpha \mathbf{x}|=|\alpha||\mathbf{x}| \)</p>
+</li>
+<li><p>Desigualdad triangular: \(|\mathbf{x}+\mathbf{y}|\leq |\mathbf{x}|+|\mathbf{y}|\), \(\quad |\mathbf{x}-\mathbf{y}|\leq |\mathbf{x}|+|\mathbf{y}|\)</p>
+</li>
+<li><p>Desigualdad de Cauchy-Schwartz: \(|\mathbf{x}\cdot \mathbf{y}| \leq |\mathbf{x}| |\mathbf{y}|\)</p>
+</li>
+<li><p>Teorema de Pitágoras: \(\mathbf{x}\perp \mathbf{y} \Leftrightarrow |\mathbf{x}+\mathbf{y}|^{2}=|\mathbf{x}|^{2}+|\mathbf{y}|^{2}\)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="complemento-ortogonal-de-un-subespacio-y-matrices-ortogonales">Complemento ortogonal de un subespacio y matrices ortogonales</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Dado un subespacio vectorial \(S\) de \(\mathbb{R}^{n}\), se denomina complemento ortogonal de \(S\) al conjunto</p>
+<p>$$
+S^{\perp}={ \mathbf{v} \in \mathbb{R}^{n}: \, \mathbf{v} \perp \mathbf{u}, \forall \,\mathbf{u}\in S }
+$$</p>
+<p>Esto es, \(S^{\perp}\) está formado por todos los vectores que son ortogonales a todos los vectores de \(S\).</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-complemento-ortogonal-">Propiedades (complemento ortogonal)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>\({ 0 } ^{\perp} = \mathbb{R}^{n}\)</p>
+</li>
+<li><p>\({ \mathbb{R}^{n} } ^{\perp} = { 0 }\)</p>
+</li>
+<li><p>\(S^{\perp}\) es un subespacio de \(\mathbb{R}^{n}\).</p>
+</li>
+<li><p>\((S^{\perp})^{\perp}=S\)</p>
+</li>
+<li><p>\(S\cap (S^{\perp})={ 0 }\) y \(S\cup (S^{\perp})=\mathbb{R}^{n}\). Por tanto, todo vector se puede expresar de forma única como suma de un vector de \(S\) y un vector de \(S^{\perp}\).</p>
+</li>
+<li><p>Si \(S=\text{Gen}\{\mathbf{v}_{1}, \ldots,\mathbf{v}_{p} \}\), entonces:</p>
+<p>$$
+\mathbf{v} \in S^{\perp}\Leftrightarrow \mathbf{v} \perp \mathbf{v}_{1}, \ldots ,\mathbf{v} \perp \mathbf{v}_{p}
+$$</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="teorema-los-cuatro-subespacios-asociados-a-una-matriz-">Teorema (Los cuatro subespacios asociados a una matriz)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Sea \(\mathbf{A}\) una matriz real de orden \(m \times n\). Se verifica:</p>
+<p>$$
+[\text{Col}(\mathbf{A})]^{\perp}=\text{Nul}(\mathbf{A}^{T}) \qquad [\text{Nul}(\mathbf{A})]^{\perp}=\text{Col}(\mathbf{A}^{T})
+$$</p>
+<p>Otras relaciones de interés son:</p>
+<p>$$
+\text{Nul}(\mathbf{A}^{T}\mathbf{A})=\text{Nul}(\mathbf{A})  \qquad   \text{Col}(\mathbf{A}^{T}\mathbf{A})=\text{Col}(\mathbf{A}^{T})
+$$</p>
+<p>Con respecto a las dimensiones de los complementos ortogonales tenemos:</p>
+<p>$$
+\dim\left( [\text{Col}(\mathbf{A})]^{\perp} \right) =m-\dim \left( \text{Col}(\mathbf{A}) \right)
+$$</p>
+<p>Puesto que, cualquier subespacio vectorial se puede expresar como el espacio columna de una matriz tenemos que para cualquier subespacio vectorial \(S\) de \(\mathbb{R}^{m}\), se verifica</p>
+<p>$$
+\dim (S^{\perp})=m-\dim (S)
+$$</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="proposici-n-1">Propiedades (matrices ortogonales)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Se denomina <strong>matriz ortogonal</strong> a toda matriz \(\mathbf{Q}\) real cuadrada no-singular cuya inversa coincide con su traspuesta: \(\mathbf{Q}^{-1}=\mathbf{Q}^{T}\). Esto es, \(\mathbf{Q}\mathbf{Q}^{T}=\mathbf{I}\).</p>
+<p>Se verifica:</p>
+<ol>
+<li><p>Si \(\mathbf{Q}\) es ortogonal, entonces \(\Rightarrow \det (\mathbf{Q})=\pm 1\).</p>
+</li>
+<li><p>Si \(\mathbf{Q}\) es ortogonal, entonces \(\Leftrightarrow \mathbf{Q}^{T}\) es ortogonal.</p>
+</li>
+<li><p>Si \(\mathbf{Q}_{1}\) y \(\mathbf{Q}_{2}\) son ortogonales, entonces \(\mathbf{Q}_{1}\mathbf{Q}_{2}\) es ortogonal.</p>
+</li>
+</ol>
+<p>Si \(\mathbf{Q}\) una matriz real cuadrada con \(\mathbf{Q} \in \mathbb{R}^{n \times n}\). Son equivalentes:</p>
+<ol>
+<li><p>\(\mathbf{Q}\) es una matriz ortogonal.</p>
+</li>
+<li><p>Las \(n\) columnas de \(\mathbf{Q}\) son ortonormales (y, por tanto, forman una base ortonormal de \(\mathbb{R}^{n}\)).</p>
+</li>
+<li><p>Las \(n\) filas de \(\mathbf{Q}\) son ortonormales (y, por tanto, forman una base ortonormal de \(\mathbb{R}^{n}\)).</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="teorema-de-la-descomposici-n-ortogonal-">Teorema (de la descomposición ortogonal)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Sea \(S\) un subespacio vectorial de \(\mathbb{R}^{n}\). Dado cualquier vector \(\mathbf{y} \in \mathbb{R}^{n}\) existe un único vector \(\widehat{\mathbf{y}} \in S\) (llamado <strong>proyección ortogonal</strong> de \(\mathbf{y}\)  sobre \(S\)) tal que</p>
+<p>$$
+\mathbf{y}-\widehat{\mathbf{y}} \in S^{\perp}
+$$</p>
+<p>De hecho, si \(\{\mathbf{u}_{1}, \mathbf{u}_{2}, \ldots, \mathbf{u}_{r}\}\) es una base ortogonal de \(S\), entonces la proyección ortogonal de \(\mathbf{y}\) sobre \(S\) es</p>
+<p>$$
+\widehat{\mathbf{y}} \doteq \text{Proy}_{S}(\mathbf{y})=\dfrac{\mathbf{y}\cdot \mathbf{u}_{1}}{|\mathbf{u}_{1}|^{2}}\mathbf{u}_{1}+\ldots+\dfrac{\mathbf{y}\cdot \mathbf{u}_{r}}{|\mathbf{u}</em>{r}|^{2}}\mathbf{u}_{r}
+$$</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="teorema-de-la-mejor-aproximaci-n-">Teorema (de la mejor aproximación)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Sea \(S\) un subespacio vectorial de \(\mathbb{R}^{n}\) y consideremos un vector \(\mathbf{y} \in \mathbb{R}^{n}\) e \(\widehat{\mathbf{y}}\) la proyección ortogonal de \(\mathbf{y}\) sobre \(S\). Entonces, se verifica que \(\widehat{\mathbf{y}}=\text{Proy}_{S}(\mathbf{y})\) es la mejor aproximación de \(\mathbf{y}\) desde \(S\). Esto es,</p>
+<p>$$
+|\mathbf{y}-\widehat{\mathbf{y}}| \leq |\mathbf{y}-\mathbf{w}| \text{, } \quad \forall \, \mathbf{w} \in S
+$$</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="formas-cuadr-ticas">Formas Cuadráticas</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Una <strong>forma cuadrática</strong> en \(\mathbb{R}^{n}\) es una función \(Q\)</p>
+<p>$$
+Q:\mathbb{R}^{n}\rightarrow \mathbb{R}
+$$</p>
+<p>de la forma:</p>
+<p>$$
+Q(\mathbf{x})=\mathbf{x}^{T}\mathbf{S}\mathbf{x}, \quad \mathbf{x} \in \mathbb{R}^{n}
+$$</p>
+<p>donde \(\mathbf{S}\) es una matriz simétrica con \(\mathbf{S} \in \mathbb{R}^{n \times n}\) que se denomina <strong>matriz de la forma cuadrática</strong>. El<strong> rango de una forma cuadrática</strong> en \(\mathbb{R}^{n}\) se define como el rango de la matriz simétrica asociada.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="clasificaci-n-de-las-formas-cuadr-ticas">Clasificación de las formas cuadráticas</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Una forma cuadrática \(Q\) es:</p>
+<ul>
+<li><p>Definida positiva si \(Q(\mathbf{x})&gt;0 \quad \forall \, \mathbf{x}\neq \mathbf{0}\)</p>
+</li>
+<li><p>Definida negativa si \(Q(\mathbf{x})&lt;0 \quad \forall \, \mathbf{x}\neq \mathbf{0}\)</p>
+</li>
+<li><p>Semidefinida positiva si \(Q(\mathbf{x})\geq 0 \quad \forall \, \mathbf{x}\)</p>
+</li>
+<li><p>Semidefinida negativa si \(Q(\mathbf{x})\leq 0 \quad \forall \, \mathbf{x}\)</p>
+</li>
+<li><p>Indefinida si \(Q(\mathbf{x})\) toma valores tanto positivos como negativos.</p>
+</li>
+</ul>
+<p>Además:</p>
+<p>Una matriz simétrica \(\mathbf{S}\) es definida (semidefinida) positiva (negativa) \(\Leftrightarrow\) La forma cuadrática \(Q(\mathbf{x})=\mathbf{x}^{T}\mathbf{S}\mathbf{x}\) es definida (semidefinida) positiva (negativa).</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Valores y vectores propios</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Dada una matriz cuadrada \(\mathbf{A}\) de orden \(n\) se dice que \(\lambda\) es un <strong>valor propio o raíz características</strong> de \(\mathbf{A}\) si existe un vector \(\mathbf{v} \in \mathbb{R}^{n}\) tal que</p>
+<p>$$
+\mathbf{A}\mathbf{v}=\lambda\mathbf{v}
+$$</p>
+<p>El vector \(\mathbf{v}\) se denomina vector propio asociado a \(\lambda\). Los valores propios de una matriz cuadrada \(\mathbf{A}\) coinciden con las raíces del polinomio característico \(|\mathbf{A}-\lambda \mathbf{I}|=0\).</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-de-las-matrices-sim-tricas-">Propiedades (de las matrices simétricas)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>Los vectores propios de matrices simétricas siempres son ortogonales.</p>
+</li>
+<li><p>Las matrices simétricas se pueden diagonalizar mediante una transformación ortogonal.</p>
+</li>
+<li><p>El rango de una matriz simétrica es igual al número de raices características distintas de cero.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="teorema-formas-cuadr-ticas-y-valores-propios-">Teorema (formas cuadráticas y valores propios)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Sea \(\mathbf{S}\) una matriz simétrica de orden \(n\). Una forma cuadrática \(\mathbf{x}^{T}\mathbf{S}\mathbf{x}\) es:</p>
+<ul>
+<li><p>Definida positiva \(\Leftrightarrow\) Todos los valores propios de \(\mathbf{S}\) son positivos.</p>
+</li>
+<li><p>Definida negativa \(\Leftrightarrow\) Todos los valores propios de \(\mathbf{S}\) son negativos.</p>
+</li>
+<li><p>Indefinida \(\Leftrightarrow\) \(\mathbf{S}\) tiene valores propios tanto positivos como negativos.</p>
+</li>
+</ul>
+<p>Dada una matrix \(\mathbf{A} \in \mathbb{R}^{m \times n}\), los productos \(\mathbf{A}^{T}\mathbf{A}\) y \(\mathbf{A}\mathbf{A}^{T}\) conducen a matrices simétricas.</p>
+<p>Sea \(\mathbf{A}\) una matriz \(m \times n\), los v<strong>alores singulares</strong> de \(\mathbf{A}\) son las raíces cuadradas de los valores propios de \(\mathbf{A}^{T}\mathbf{A}\).</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-de-la-matriz-sim-trica-mathbf-a-t-mathbf-a-">Propiedades (de la matriz simétrica \(\mathbf{A}^{T}\mathbf{A}\))</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>\(\mathbf{A}^{T}\mathbf{A}\) es una matriz simétrica y puede diagonalizarse ortogonalmente.</p>
+</li>
+<li><p>Todos los valores propios de \(\mathbf{A}^{T}\mathbf{A}\) son no negativos: Sean \(\lambda_{1}, \ldots, \lambda_{n}\) los valores propios de \(\mathbf{A}^{T}\mathbf{A}\) y \(\{\mathbf{v}_{1}, \ldots, \mathbf{v}_{n}\}\) una base ortonormal para \(\mathbb{R}^{n}\) que consiste en los vectores propios (normalizados) de \(\mathbf{A}^{T}\mathbf{A}\). Entonces, para \(1 \leq i \leq n\):</p>
+<p>$$
+|\mathbf{A}\mathbf{v}_{i}|^{2}=(\mathbf{A}\mathbf{v}_{i})^{T}(\mathbf{A}\mathbf{v}_{i})
+=\mathbf{v}_{i}^{T}\mathbf{A}^{T}\mathbf{A}\mathbf{v}_{i}\underbrace{=}_{\substack{\mathbf{v}_{i} \text{ es un vector} \\ \text{propio de } \mathbf{A}^{T}\mathbf{A}}}\mathbf{v}_{i}^{T}\lambda_{i}\mathbf{v}_{i}\underbrace{=}_{\mathbf{v}_{i} \text{ unitario}}\lambda_{i}
+$$</p>
+<p>  Así que, todos los valores propios son no negativos.</p>
+</li>
+<li><p>Los valores singulares de \(\mathbf{A}\) son las longitudes de los vectores \(\mathbf{A}\mathbf{v}_{i}\): Suponiendo que los valores propios están ordenados:
+\(\lambda_{1}\geq \ldots \geq \lambda_{n} \geq 0\), los valores singulares de \(\mathbf{A}\) son las raíces cuadradas de los valores propios de \(\mathbf{A}^{T}\mathbf{A}\) denotados por \(\sigma_{1}, \ldots, \sigma_{n}\):</p>
+<p>$$
+\sigma_{i}=\sqrt{\lambda_{i}} \quad 1 \geq i \geq n
+$$</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="esperanza-de-una-forma-cuadr-tica">Esperanza de una forma cuadrática</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Sea \(\mathbf{A} \in \mathbb{R}^{m \times m}\) una matriz simétrica y \(\mathbf{x} \in \mathbb{R}^{m}\). Para la forma cuadrática \(\mathbf{x}^{T}\mathbf{A}\mathbf{x}\)
+se tiene que</p>
+<p>$$
+\mathbf{x}^{T}\mathbf{A}\mathbf{x}=\text{traza}\left\{ \mathbf{x}^{T}\mathbf{A}\mathbf{x}\right\}=\text{traza}\left\{\mathbf{A}\mathbf{x}\mathbf{x}^{T}\right\}
+$$</p>
+<p>La esperanza de la forma cuadrática es:</p>
+<p>$$
+E [ \mathbf{x}^{T}\mathbf{A}\mathbf{x} ]  = \text{traza}\left\{\mathbf{A} V [ \mathbf{x} ]\right\}+ E [ \mathbf{x} ]^{T} \mathbf{A}E [ \mathbf{x} ]
+$$</p>
+<p>Si \(\mathbf{x}\) es tal que \(E [\mathbf{x}]=\mathbf{0}\), entonces</p>
+<p>$$
+E [ \mathbf{x}^{T}\mathbf{A}\mathbf{x} ]  = \text{traza}\left\{\mathbf{A} V [ \mathbf{x} ]\right\}
+$$</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="matrices-idempotentes-matriz-de-proyecci-n">Matrices idempotentes.</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Una matriz cuadrada \(\mathbf{A}\in \mathbb{R}^{n \times n}\) se dice idempotente si \(\mathbf{A}\cdot \mathbf{A} =\mathbf{A}\).</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="propiedades-de-las-matrices-idempotentes-">Propiedades (de las matrices idempotentes)</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<ul>
+<li><p>Si \(\mathbf{A}\) es idempotente y no singular, entonces \(\mathbf{A}=\mathbf{I}\). Por tanto, una matriz idempotente que no es la identidad será singular, esto es, rango\((\mathbf{A}=k&lt;n)\).</p>
+</li>
+<li><p>Las raíces características de una matriz idempotente son cero o uno.</p>
+</li>
+<li><p>Una matriz simétrica e idempotente es siempre semidefinida positiva.</p>
+</li>
+<li><p>Si \(\mathbf{A}\) una matriz simétrica e idempotente de \(\text{rango}(\mathbf{A})=k\), entonces \(\text{traza}(\mathbf{A})=k\).</p>
+</li>
+<li><p>Si \(\mathbf{A}\) y \(\mathbf{B}\) son idempotentes, entonces \(\mathbf{A}\mathbf{B}\) es idempotente si \(\mathbf{A}\mathbf{B}=\mathbf{B}\mathbf{A}\).</p>
+</li>
+<li><p>Si \(\mathbf{A}\) es idempotente y \(\mathbf{P}\) ortogonal, entonces \(\mathbf{P}^{T}\mathbf{A}\mathbf{P}\) es idempotente.</p>
+</li>
+<li><p>Si \(\mathbf{A}\) es idempotente, entonces \(\mathbf{I}-\mathbf{A}\) es idempotente.</p>
+</li>
+</ul>
+<p>Se dice matriz de proyección a una matriz \(\mathbf{P}\) idempotente y simétrica.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="packageLicense" class="cc cc-by-sa">
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="mnimos_cuadrados_ordinarios2.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="mnimos_cuadrados_ordinarios2.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+</body></html>
+
+

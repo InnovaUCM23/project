@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Imagen de una Circunferencia por una Aplicación Lineal | PID </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="MBM" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+<body class="exe-web-site" id="exe-node-3"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">Matemáticas útiles: conceptos y aplicaciones</div></header>
+<nav id="siteNav">
+<ul>
+   <li id="active"><a href="index.html" class="active daddy main-node">Inicio</a></li>
+   <li><a href="imagen_circunferencia.html" class="no-ch">Imagen de una Circunferencia por una Aplicación Lineal</a></li>
+   <li><a href="curvas.html" class="no-ch">Curvas paramétricas en el plano</a></li>
+   <li><a href="svd.html" class="no-ch">Descomposición en valores singulares</a></li>
+   <li><a href="mnimos_cuadrados_ordinarios2.html" class="no-ch">Mínimos Cuadrados Ordinarios</a></li>
+      <ul>
+      		<li><a href="Ejemplo_MMCC.html" class="no-ch">Ejemplo: Aplicación de Mínimos Cuadrados Ordinarios</a></li>
+      </ul>
+   <li><a href="repaso_de_lgebra_matricial.html" class="no-ch">Repaso de Álgebra Matricial</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="repaso_de_lgebra_matricial.html" class="prev"><span><span>&laquo; </span>Anterior</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="svd">Descomposición en valores singulares</h1></header>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="int_geo">Interpretación Geométrica</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Como se sabe, dada una matriz \(A \in \mathbb  M_{m\times n}\) de \(m\) filas y \(n\) columnas puede escribirse como</p>
+<p>$$
+A = USV^{T}
+$$</p>
+<p>donde \(U \in \mathbb M_{m}\) y \(V \in \mathbb M_{n}\) son matrices ortogonales (i.e. \(U^{T}U=I_m \), \(V^{T}V=I_n \)) y \(S \in \mathbb M_{m\times n}\) es una matriz diagonal. Una demostración sencilla de esto puede encontrarse en este <a href="https://es.wikipedia.org/wiki/Descomposici%C3%B3n_en_valores_singulares">artículo</a>. </p>
+<p>Si reescribimos la ecuación anterior como</p>
+<p>$$
+AV = US
+$$</p>
+<p>podemos interpretarla como que existe una base ortonormal de \(\mathbb  R^n\) (las columnas de \(V\) ) que se transforma por \(A\) en una base ortogonal de \(\mathbb  R^m\) (las columnas de \(U\), cada una de ellas multiplicada por el elemento correspondiente de la diagonal de \(S\) ).</p>
+<p>De esta forma, la esfera unidad del primer espacio se convierte en un elipsoide en el segundo cuyos ejes son, precisamente, el citado sistema ortogonal en \(\mathbb R^m\). </p>
+<p>Vamos a ver esto en el caso en que  \(m,n=2\). Recordamos que, en el plano, las matrices ortogonales representan isometrías (una rotación alrededor del origen o una reflexión respecto a una recta que pasa por el origen).</p>
+<hr>
+<p>Dada la matriz</p>
+<p>$$ A = \begin{pmatrix}
+1 & 1 \\
+1 & -2
+\end{pmatrix}
+$$</p>
+<p>su descomposición en valores singulares \( A = USV^{T}\) es</p>
+<p>$$ U = \begin{pmatrix}
+-0.2898 & 0.9571 \\
+ 0.9571 & 0.2898
+\end{pmatrix}
+$$</p>
+<p>$$ S = \begin{pmatrix}
+ 2.3028 & 0 \\
+ 0 & 1.3028
+\end{pmatrix}
+$$</p>
+<p>$$ V = \begin{pmatrix}
+ 0.2898 & 0.9571 \\
+ -0.9571 &  0.2898
+\end{pmatrix}
+$$</p>
+
+<p>En la siguiente figura se muestra cómo varía la circunferencia unidad según se van multiplicando sus puntos por \( V^T\), \( S\) y \( U\). Los ejes que se dibujan son, respectivamente, las columnas de \( V\), sus transformados por \( V^T\) (es decir, la base canónica), la dilatación de esta como resultado de multiplicar por \( S\) y, finalmente, la rotación correspondiente a \( U\).</p>
+<center><img src="fig4_1.png" data-align="center"></center>
+<p>	De esta forma, los ejes de la elipse en que se transforma la circunferencia unidad son los correspondientes a los vectores</p>
+<p>$$ E1 = \begin{pmatrix}
+-0.6673 \\
+ 2.2040
+\end{pmatrix}
+$$</p>
+<p>de longitud \( 2.3028\) y </p>
+<p>$$ E2 = \begin{pmatrix}
+1.2469 \\
+0.3775
+\end{pmatrix}
+$$</p>
+<p>de longitud \(  1.3028\).</p>
+<p>En este enlace puedes descargar el <a href="geomSVDv1.mlx">script Live Editor</a></p>
+<hr>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="packageLicense" class="cc cc-by-sa">
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="repaso_de_lgebra_matricial.html" class="prev"><span><span>&laquo; </span>Anterior</span></a>
+</nav>
+</div>
+</div>
+</body></html>

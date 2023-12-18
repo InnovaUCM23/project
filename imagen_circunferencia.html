@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Imagen de una Circunferencia por una Aplicación Lineal | PID </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="MBM" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+<body class="exe-web-site" id="exe-node-3"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">Matemáticas útiles: conceptos y aplicaciones</div></header>
+<nav id="siteNav">
+<ul>
+   <li id="active"><a href="index.html" class="active daddy main-node">Inicio</a></li>
+   <li><a href="imagen_circunferencia.html" class="no-ch">Imagen de una Circunferencia por una Apliación Lineal</a></li>
+   <li><a href="curvas.html" class="no-ch">Curvas paramétricas en el plano</a></li>
+   <li><a href="svd.html" class="no-ch">Descomposición en valores singulares</a></li>
+   <li><a href="mnimos_cuadrados_ordinarios2.html" class="no-ch">Mínimos Cuadrados Ordinarios</a></li>
+   <ul>
+   		<li><a href="Ejemplo_MMCC.html" class="no-ch">Ejemplo: Aplicación de Mínimos Cuadrados Ordinarios</a></li>
+   </ul>
+   <li><a href="repaso_de_lgebra_matricial.html" class="no-ch">Repaso de Álgebra Matricial</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="repaso_de_lgebra_matricial.html" class="prev"><span><span>&laquo; </span>Anterior</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="imagen_circunferencia">Imagen de una Circunferencia por una Aplicación Lineal</h1></header>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="motivacion">Motivación</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Motivados por el estudio de los sistemas de Ecuaciones Diferenciales Ordinarias lineales de coeficientes constantes del tipo:</p>
+<p>$$
+\begin{pmatrix}
+x'(t)\\
+y'(t)
+\end{pmatrix} = \begin{pmatrix}
+a &amp; b\\
+c &amp; d
+\end{pmatrix}  \cdot \begin{pmatrix}
+x(t)\\
+y(t)
+\end{pmatrix}
+$$</p>
+<p>y más concretamente por la representación de las órbitas de sus soluciones  en el denominado <strong>plano de fases</strong>, nos planteamos cómo calcular de un modo sencillo la imagen de una circunferencia por una aplicación lineal invertible.</p>
+<hr>
+<p>Sea \(P\) una matriz invertible \(2\times 2\) que representa a una aplicación lineal de \(\mathbb R^2\) en \(\mathbb R^2\), y sea \(S^1=\{(x,y): x^2+y^2=1\}\), la circunferencia unidad. Nos preguntamos, ¿quién es \(P(S^1)\)?</p>
+<hr>
+
+<ul>
+   <li><p>En primer lugar, notemos que la continuidad de \(P\) nos asegura que nuestro conjunto será una curva cerrada  por ser imagen de una curva cerrada (de hecho homeomorfa a \(S^1\)), mientras  que la linealidad de \(P\) nos dice que dicha curva será una cónica simétrica respecto al origen por ser la imagen de una cónica simétrica y centrada en el origen. De este modo, si denotamos por \(E=P(S^1)\), nuestro objetivo es determinar una elipse \(E\) centrada en el origen. Para ello, vamos a calcular sus dos ejes (aunque bastaría con uno de ellos porque ambos son ortogonales) y la longitud de los correspondientes semiejes.</li>
+   <li>Notemos que \(E\) podría ser también una circunferencia, es decir, una  elipse con los semiejes de la misma longitud.</p></li>
+</ul>
+<center><img src="fig3_1.png" data-align="center"></center>
+<p>Para resolver nuestro problema vamos a emplear dos métodos, uno <a href="#m-todo-algebraico">algebraico</a> (utilizando <strong>Álgebra de Matrices</strong>)</strong> y otro <a href="#m-todo-anal-tico">analítico</a> (utilizando los <strong>Multiplicadores de Lagrange</strong>). Nos parece interesante exponer los dos, para hacer visible cómo diferentes puntos de vista resuelven una misma cuestión.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="m-todo-algebraico">Método algebraico</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Denotando los vectores de \(\mathbb R^2\) por matrices columna y utilizando el lenguaje matricial, tenemos que </p>
+<p>$$
+(x,y)\in S^1 \Leftrightarrow \begin{pmatrix}
+x\\
+y
+\end{pmatrix}^t \cdot \begin{pmatrix}
+x\\
+y
+\end{pmatrix}=1,
+$$</p>
+<p>donde \(t\) denota la matriz traspuesta.</p>
+<p>Como  \((\bar{x}, \bar{y})\in E\) si, y solo si, \(P^{-1} (\bar{x}, \bar{y}) \in S^1\), donde \(P^{-1}\) es la matriz inversa de \(P\), tenemos que  </p>
+<p>$$
+(\bar{x}, \bar{y})\in E  \Leftrightarrow \Big( P^{-1} \cdot \begin{pmatrix}
+\bar{x}\\
+\bar{y}
+\end{pmatrix} \Big)^t \cdot P^{-1} \cdot \begin{pmatrix}
+\bar{x}\\
+\bar{y}
+\end{pmatrix} =1.
+$$</p>
+<p>O lo que es equivalente, </p>
+<p>$$
+(\bar{x}, \bar{y})\in E  \Leftrightarrow \begin{pmatrix}
+\bar{x}\\
+\bar{y}
+\end{pmatrix} ^t \cdot (P^{-1})^t\cdot P^{-1} \cdot \begin{pmatrix}
+\bar{x}\\
+\bar{y}
+\end{pmatrix} =1.
+$$</p>
+<p>En consecuencia, la matriz simétrica \((P^{-1})^t\cdot P^{-1}\) es la matriz que nos da la ecuación de la elipse \(E\). Para determinar sus ejes vamos a buscar la ecuación reducida de \(E\), para lo cual vamos a realizar lo que se conoce como <strong>diagonalización por semejanza ortogonal</strong> de una matriz simétrica (véase <a href="https://ucm.on.worldcat.org/oclc/1026245744">Merino-Santos</a> pag. 216).  </p>
+<p>Esto último quiere decir que existe una base ortonormal \(\{\vec{v_1}, \vec{v_2}\}\)  en \(\mathbb R^2\) tal que
+<p>$$
+(P^{-1})^t\cdot P^{-1}= Q\cdot D \cdot Q^{-1}
+$$</p>
+<p>donde:</p>
+<ul>
+<li>\(D\) es una matriz diagonal conteniendo los autovalores \(\alpha\) y \(\beta\) de la matriz \((P^{-1})^t\cdot P^{-1}\) (que son reales y no nulos por ser simétrica e invertible),</li>
+<li>y donde \(Q\) es una  matriz  ortogonal (i.e. \(Q^{-1}= Q^t\)) que tiene por columnas los autovectores correspondientes, i.e.,  \(Q=(\vec{v_1} |  \vec{v_2})\).</li>
+</ul>
+<p>Es fácil comprobar que \((P^{-1})^t\cdot P^{-1}\) es además definida positiva por lo que sus autovalores deben ser positivos.</p>
+<p>En consecuencia, la ecuación de \(E\) queda:</p>
+<p>$$
+\begin{pmatrix}
+\bar{x}\\
+\bar{y}
+\end{pmatrix} ^t \cdot Q\cdot D \cdot Q^t \begin{pmatrix}
+\bar{x}\\
+\bar{y}
+\end{pmatrix} =1
+$$</p>
+<p>Es decir,</p>
+<p>$$
+\Big ( Q^t \cdot \begin{pmatrix}
+\bar{x}\\
+\bar{y}
+\end{pmatrix}\Big ) ^t \cdot \begin{pmatrix}
+\alpha &amp; 0\\
+0 &amp; \beta
+\end{pmatrix} \cdot Q^t \begin{pmatrix}
+\bar{x}\\
+\bar{y}
+\end{pmatrix} =1
+$$</p>
+<p>Lo que nos dice la igualdad anterior es que el cambio de variables que debemos hacer para llegar a la ecuación reducida de la elipse es el que da la matriz \(Q^t\), o lo que es lo  mismo \(Q^{-1}\).</p>
+<p>Notemos que la transformación dada por \(Q=(\vec{v_1} |  \vec{v_2})\) lleva la base canónica de \(\mathbb R^2\) a la base \(\{\vec{v_1}, \vec{v_2}\}\), por lo que \(Q^{-1}\) llevará esta base a la canónica. Es decir, la aplicación \(Q^{-1}\) coloca los ejes de la elipse sobre los ejes coordenados. </p>
+<p>Esto significa que la ecuación de la elipse en las nuevas coordenadas \((x';, y')= Q^{-1}(\bar{x}, \bar{y})\) será \(\alpha (x')^2 +\beta (y')^2=1\), o equivalentemente</p>
+<p>$$
+\frac{(x')^2}{(\sqrt{1/\alpha})^2}  + \frac{(y')^2}{(\sqrt{1/\beta})^2 } = 1.
+$$</p>
+<p>Por lo que deducimos que las longitudes de los semiejes serán la raíz cuadrada de \(1/\alpha\) y de \(1/\beta\), respectivamente.</p>
+<p>En definitiva, ya hemos resuelto el problema inicial.</p>
+<hr>
+<p>Los ejes de \(E\) están situados en las rectas generadas por los autovectores \(\vec{v_1}\) y \(\vec{v_2}\), y las longitudes de los semiejes serán la raíz cuadrada de los inversos de los correspondientes autovalores, todo ello referido a la matriz \((P^{-1})^t\cdot P^{-1}\).}</p>
+<hr>
+<p>A continuación, vamos a ver cómo  es posible obtener todos estos datos directamente a través de la matriz inicial \(P\). En efecto, sean:</p>
+<ul>
+<li>\(\vec{u_1}\) y \(\vec{u_2}\) tales que \(P(\vec{u_1})=\vec{v_1}\) y</li>
+<li>\(P(\vec{u_2})=\vec{v_2}\).</li>
+</ul>
+<p>Como \((P^{-1})^t\cdot P^{-1}(\vec{v_1})=\alpha \vec{v_1}\), entonces \((P^{-1})^t\cdot P^{-1}(P(\vec{u_1}))=\alpha P(\vec{u_1})\), luego \((P^{-1})^t(\vec{u_1})=\alpha P(\vec{u_1})\). Es decir, \(\vec{u_1}=\alpha P^t\cdot P(\vec{u_1})\), de lo que deducimos que \(\vec{u_1}\) y análogamente \(\vec{u_2}\) son  autovectores de la matriz \(P^t\cdot P\) correspondientes a los autovalores \(1/\alpha\) y \(1/\beta\), respectivamente.</pp>
+
+<p>De todo lo anterior deducimos que la elipse \(E=P(S^1)\) queda determinada haciendo lo siguiente:</p>
+<ol>
+<li><p>Calculamos los autovalores \(\lambda_1\) y \(\lambda_2\) de \(P^t\cdot P\).</p>
+</li>
+<li><p>Tomamos una base de autovectores \(\{\vec{u_1}, \vec{u_2}\}\) de \(P^t\cdot P\) asociados a dichos autovalores.</p>
+</li>
+<li><p>Los ejes de \(E\) están sobre las rectas generadas por \(P(\vec{u_1})\) y \(P(\vec{u_2})\), respectivamente.</p>
+</li>
+<li><p>Las longitudes de los semiejes son \(\sqrt{\lambda_1}\) y \(\sqrt{\lambda_2}\).</p>
+</li>
+</ol>
+<p>Notemos que si \(\lambda_1=\lambda_2\) entonces \(E\) es la circunferencia de centro el origen y radio \(\sqrt{\lambda_1}\).</p>
+<p>Por otro lado, los puntos 2) y 3) pueden simplificarse teniendo en cuenta que los ejes de \(E\) son ortogonales,
+de modo que bastaría con  calcular un único autovector.</p>
+<p>En Álgebra Lineal Numérica se definen los <strong>valores singulares</strong> de una matriz \(P\) como las raíces cuadradas de los autovalores (no negativos) de la matriz \(P^t\cdot P\).
+En consecuencia, las longitudes de los semiejes de la elipse \(P(S^1)\) no son más que los valores singulares de la matriz \(P\).</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="m-todo-anal-tico">Método analítico</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Otro modo de determinar la elipse \(E=P(S^1)\) es a partir de los cuatro puntos que definen los dos ejes. Teniendo en cuenta que el eje mayor es el que pasa por los dos puntos (simétricos) más alejados del origen, es decir los de mayor norma, siendo esta norma la longitud del correspondiente semieje; y  el eje menor es el que pasa por los dos puntos (simétricos) de menor norma, que será la longitud del semieje menor, tendremos que nuestro problema se traduce en calcular el máximo y el mínimo de la función norma euclídea o equivalentemente del cuadrado de la misma, restringida a los puntos de la elipse.</p>
+<center><img src="fig3_2.png" data-align="center"></center>
+<p>Se trata pues de un problema de máximos y mínimos de una función de dos variables sujeta a una restricción. </p>
+<hr>
+<p>Más precisamente, queremos calcular los máximos y los mínimos de:</p>
+<p>$$
+f(x,y)=|P(x,y)|^2
+$$</p>
+<p>sujetos a la condición \(g(x,y)=x^2+y^2-1=0\).</p>
+<hr>
+<p>Planteamos este problema utilizando los denominados <strong>multiplicadores de Lagrange</strong>. Denotando por  \(\nabla\) el gradiente de una función y siendo \(\lambda\) los  multiplicadores de Lagrange, tenemos: </p>
+<p>$$
+\nabla f (x,y)=\lambda \cdot \nabla g (x,y)
+$$</p>
+<p>$$
+x^2+y^2=1
+$$</p>
+<p>Es claro que \(\nabla g (x,y) = 2 (x, y)\). Por otro lado, teniendo en cuenta que \(f(x,y)= (\varphi\circ P)(x,y)\), donde \(\varphi(u,v)=|(u,v)|^2=u^2+v^2\), y aplicando la <strong>regla de la cadena</strong>, tenemos: </p>
+<p>$$
+\nabla f (x, y)= \nabla \varphi(P(x,y)) \cdot D P(x, y)
+$$</p>
+<p>siendo  \( D P(x, y)\) la diferencial de \(P\) en el punto \((x,y)\). Como \(P\) es una aplicación lineal entonces \( D P(x, y) = P\), para todo \((x,y)\). AdemÁs,  \(\nabla \varphi(u,v) = 2(u,v)\), por lo que se tiene:</p>
+<p>$$
+\nabla f (x, y)= 2 P(x,y) \cdot P = 2 \Big( P \cdot \begin{pmatrix}
+x\\
+y
+\end{pmatrix} \Big)^t\cdot P
+$$</p>
+<p>En resumen, la igualdad \(\nabla f (x,y)=\lambda \cdot \nabla g (x,y)\), nos quedará:</p>
+<p>$$
+\Big( P \cdot \begin{pmatrix}
+x\\
+y
+\end{pmatrix} \Big)^t\cdot P = \lambda (x,y)
+$$</p>
+<p>o lo que es equivalente, tomando traspuesta,</p>
+<p>$$
+P^t\cdot P\begin{pmatrix}
+x\\
+y
+\end{pmatrix} = \lambda \begin{pmatrix}
+x\\
+y
+\end{pmatrix}
+$$</p>
+<p>Es decir, los multiplicadores de  Lagrange son los autovalores \(\lambda_1\) y \(\lambda_2\) de  la matriz \(P^t\cdot P\), y los puntos \((x,y)\) que buscamos son los autovectores de norma 1 asociados a dichos autovalores. Además los valores máximos y mínimos de la función \(f\) son:</p>
+<p>$$
+f(x,y)=|P(x,y)|^2 = \begin{pmatrix}
+x\\
+y
+\end{pmatrix}^t \cdot P^t \cdot P \cdot \begin{pmatrix}
+x\\
+y
+\end{pmatrix}=  \begin{pmatrix}
+x\\
+y
+\end{pmatrix}^t \cdot \lambda \begin{pmatrix}
+x\\
+y
+\end{pmatrix}= \lambda|(x,y)|^2= \lambda
+$$</p>
+<hr>
+<p>Obtenemos, como en la sección anterior, que la longitud de los semiejes son precisamente los valores singulares de la matriz \(P\). Mientras que los ejes se encuentran en las rectas determinadas por la imagen por \(P\) de los autovectores de \(P^t\cdot P\).</p>
+<hr>
+<p>Notemos que si \(\sqrt{\lambda_1}\) es el valor singular mayor y \(\sqrt{\lambda_2}\) es el menor, entonces: </p>
+<p>$$
+\sqrt{\lambda_1}=\sup \{|P(x,y)|: |(x,y)|=1\}
+$$</p>
+<p>$$
+\sqrt{\lambda_2}=\inf \{|P(x,y)|: |(x,y)|=1\}
+$$</p>
+<p>cantidades conocidas en Ánalisis Funcional como la <strong>norma</strong> y la  <strong>co-norma</strong>, respectivamente, de la aplicación lineal \(P\). Es bien conocido que la norma anterior es realmente una norma en el espacio de las aplicaciones lineales, mientras que la co-norma no lo es. Desde el punto de vista geométrico, la circunferencia de centro el origen y de radio la norma de $P$ es la menor circunferencia que contiene a la elipse, mientras que la co-norma es el radio de la mayor circunferencia contenida en la elipse. La co-norma nos da idea de cómo de achatada es la elipse.</p>
+<center><img src="fig3_3.png" data-align="center"></center>
+<p>Notemos que si \(P\) es una matriz singular, es decir no invertible, (y no nula) entonces la imagen por \(P\) de todo \(\mathbb R^2\) es una recta que pasa por el origen, por lo que la imagen de \(S^1\) será un segmento centrado en el origen, es decir una elipse degenerada. En este caso, la co-norma de \(P\) será \(0\).</p>
+<p>Grosso modo, podemos decir que cuanto más pequeña sea la co-norma de \(P\) más cerca está esta matriz \(P\) de ser singular, es decir, de que sus vectores columna sean linealmente dependientes.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="packageLicense" class="cc cc-by-sa">
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="index.html" class="prev"><span><span>&laquo; </span>Anterior</span></a>
+</nav>
+</div>
+</div>
+</body></html>

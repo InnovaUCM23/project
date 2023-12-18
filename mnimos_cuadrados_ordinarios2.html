@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Mínimos Cuadrados Ordinarios | PID </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="MBM" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.8.1 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+<body class="exe-web-site" id="exe-node-3"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">Matemáticas útiles: conceptos y aplicaciones</div></header>
+<nav id="siteNav">
+<ul>
+   <li id="active"><a href="index.html" class="active daddy main-node">Inicio</a></li>
+   <li><a href="imagen_circunferencia.html" class="no-ch">Imagen de una Circunferencia por una Aplicación Lineal</a></li>
+   <li><a href="curvas.html" class="no-ch">Curvas paramétricas en el plano</a></li>
+   <li><a href="svd.html" class="no-ch">Descomposición en valores singulares</a></li>
+   <li><a href="mnimos_cuadrados_ordinarios2.html" class="no-ch">Mínimos Cuadrados Ordinarios</a></li>
+   <ul>
+   		<li><a href="Ejemplo_MMCC.html" class="no-ch">Ejemplo: Aplicación de Mínimos Cuadrados Ordinarios</a></li>
+   </ul>
+   <li><a href="repaso_de_lgebra_matricial.html" class="no-ch">Repaso de Álgebra Matricial</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="repaso_de_lgebra_matricial.html" class="prev"><span><span>&laquo; </span>Anterior</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Mínimos Cuadrados Ordinarios</h1></header>
+
+<h1 id="problemas-de-m-nimos-cuadrados-interpretaci-n-geom-trica">Problemas de mínimos cuadrados. Interpretación geométrica</h1>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="planteamiento-del-problema">Planteamiento del problema</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Sea \(\mathbb{R}^{m\times n}\) el conjunto de las matrices con \(m\) filas y \(n\) columnas. </p>
+<p>Cuando trabajamos con observaciones, frecuentemente, nos encontramos con sistemas de ecuaciones lineales</p>
+<p>$$
+\mathbf{A}\mathbf{x}=\mathbf{y}
+$$</p>
+<p>con \(\mathbf{A}\in\mathbb{R}^{m\times n}\) y donde, por los errores de observación:</p>
+<ol>
+<li><p>El número de observaciones \(m\) es mayor que el número de incógnitas \(n\).</p>
+</li>
+<li><p>El sistema de ecuaciones \(\mathbf{A}\mathbf{x}=\mathbf{y}\) es incompatible.<br>
+  [<a href="repaso_de_lgebra_matricial.html#propiedades-espacio-columna-">Sabemos que el sistema de ecuaciones \(\mathbf{A}\mathbf{x}=\mathbf{y}\) es incompatible \(\Leftrightarrow \mathbf{y} \not\in \text{Col}(\mathbf{A})\)</a>.]</p>
+</li>
+</ol>
+<p>Pero si los errores de observación son pequeños, el vector \(\mathbf{y}\) distará muy poco del espacio \(\text{Col}(\mathbf{A})\) <br>
+[<a href="repaso_de_lgebra_matricial.html#propiedades-espacio-columna-"> \(\text{Col}(\mathbf{A})\) es un subespacio de \(\mathbb{R}^{m}\)</a>]. <br>
+Esta proximidad sugiere que para estimar \(\mathbf{x}\) se reemplaza el vector \(\mathbf{y}\) por su proyección ortogonal sobre \(\text{Col}(\mathbf{A})\).</p>
+<p>Llamamos \(\widehat{\mathbf{y}}\) a la proyección de \(\mathbf{y}\) sobre el espacio columna de \(\mathbf{A}\). Como \(\widehat{y}=\text{proy}_{\text{Col}(\mathbf{A})}(\mathbf{y}) \in \text{Col}(\mathbf{A})\) existirá un \(\widehat{\mathbf{x}}\) tal que \(\widehat{\mathbf{y}}=\mathbf{A}\widehat{\mathbf{x}}\), es decir: El sistema \(\widehat{\mathbf{y}}=\mathbf{A}\widehat{\mathbf{x}}\) es compatible.</p>
+<center><img src="T2_1.png" title="Interpretación geométrica de los Mínimos Cuadrados" alt="Interpretación geométrica de los Mínimos Cuadrados" data-align="center"></center>
+<ul>
+<li><p>Por el <a href="repaso_de_lgebra_matricial.html#teorema-de-la-mejor-aproximaci-n-">teorema de la mejor aproximación</a> \(|\widehat{\mathbf{y}}-\mathbf{y}| \leq |\mathbf{w}-\mathbf{y}| \text{ } \forall \, \mathbf{w} \in \text{Col}(\mathbf{A})\),</p>
+</li>
+<li><p>por tanto, las soluciones del sistema de ecuaciones \(\mathbf{A}\widehat{\mathbf{x}}=\widehat{\mathbf{y}}\) están caracterizadas por \(|\mathbf{A}\widehat{\mathbf{x}}-\mathbf{y}|^{2} \leq |\mathbf{A}\mathbf{x}-\mathbf{y}|^{2} \text{,} \quad \forall \, \mathbf{x} \in \mathbb{R}^{n}.\)</p>
+</li>
+<li><p>Si denotamos</p>
+<p>\(\mathbf{r}(\mathbf{x}) = \mathbf{A}\mathbf{x}-\mathbf{y} = \begin{pmatrix} r_{1}(\mathbf{x}) \\ \vdots \\ r_{m}(\mathbf{x})\end{pmatrix}\)</p>
+
+<p>teniendo en cuenta que </p>
+<p>$$
+|\mathbf{A}\mathbf{x}-\mathbf{y}|^{2}=\begin{pmatrix}r_{1}(\mathbf{x}) &amp; \ldots &amp; r_{m}(\mathbf{x})\end{pmatrix}\begin{pmatrix}r_{1}(\mathbf{x}) \\ \vdots \\ r_{m}(\mathbf{x})\end{pmatrix}=\sum_{i=1}^{m}r_{i}(\mathbf{x})^{2}
+$$</p>
+<p>la desigualdad anterior se reescribe como:</p>
+<p>$$
+\sum_{i=1}^{m}r_{i}(\widehat{\mathbf{x}})^{2} \leq \sum_{i=1}^{m}r_{i}(\mathbf{x})^{2}
+$$</p>
+<hr>
+<p>Por tanto, las soluciones del sistema \(\mathbf{A}\widehat{\mathbf{x}}=\widehat{\mathbf{y}}\) tienen la propiedad de ser los puntos \(\widehat{\mathbf{x}} \in \mathbb{R}^{n}\) donde la suma de los cuadrados de las componentes del vector \(\mathbf{A}\mathbf{x}-\mathbf{y}\) alcanza su mínimo.</p>
+<hr>
+<p>En términos generales, resolver un problema en el sentido mínimos cuadrados es sustituir un problema en el que hay que resolver un sistema de ecuaciones que no tiene solución por el problema de minimizar una suma de cuadrados.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<h1 id="soluciones-m-nimos-cuadrados-de-sistemas-de-ecuaciones-lineales">Soluciones mínimos cuadrados de sistemas de ecuaciones lineales</h1>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="soluciones-m-nimos-cuadrados-">Definición: Solución mínimos cuadrados</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Sean \(\mathbf{A}\in \mathbb{R}^{m\times n}\) e \(\mathbf{y}\in \mathbb{R}^{m}\). Un vector \(\widehat{\mathbf{x}}\in \mathbb{R}^{n}\) es una
+<strong>solución mínimos cuadrados </strong>del sistema de ecuaciones lineales \(\mathbf{A}\mathbf{x}=\mathbf{y}\) si</p>
+<p>$$
+    \mathbf{f}(\widehat{\mathbf{x}})\leq \mathbf{f}(\mathbf{x})
+$$</p>
+<p>para todo \(\mathbf{x}\in \mathbb{R}^{n}\), donde \(\mathbf{f}(\mathbf{x})=| \mathbf{A}\mathbf{x}-\mathbf{y}|^{2}\).</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="teorema-soluci-n-m-nimos-cuadrados-">Solución mínimos cuadrados de sistema incompatible</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Dado un sistema de ecuaciones \(\mathbf{A}\mathbf{x}=\mathbf{y}\), con \(\mathbf{A}\in \mathbb{R}^{m\times n}\) e \(\mathbf{y}\in \mathbb{R}^{m}\).
+Sea \(\widehat{\mathbf{x}}\in \mathbb{R}^{n}\). </p>
+<p>\(\widehat{\mathbf{x}}\) es solución mínimos cuadrados de \(\mathbf{A}\mathbf{x}=\mathbf{y} \Leftrightarrow \widehat{\mathbf{x}}\) es solución del sistema de ecuaciones (compatible)</p>
+<p>$$
+\mathbf{A}^{T}\mathbf{A}\,\widehat{\mathbf{x}}=\mathbf{A}^{T}\mathbf{y}
+$$</p>
+<p>Este sistema se denomina <strong>sistema de ecuaciones normales</strong> asociado al sistema de ecuaciones \(\mathbf{A}\mathbf{x}=\mathbf{y}\).</p>
+<hr>
+<ol>
+<li><p>Si \(\text{rango}(\mathbf{A})=n\), el sistema de ecuaciones normales es compatible determinado y, por tanto, el sistema \(\mathbf{A}\mathbf{x}=\mathbf{y}\) tiene una única solución mínimos cuadrados:</p>
+<p>$$
+\widehat{\mathbf{x}}=\mathbf{A}^{+}\mathbf{y}  \qquad \text{con } \mathbf{A}^{+}=(\mathbf{A}^{T}\mathbf{A})^{-1}\mathbf{A}^{T}
+$$</p>
+</li>
+<li><p>Si \(\text{rango}(\mathbf{A})&lt;n\), el sistema de ecuaciones normales es compatible indeterminado y, por tanto, \(\mathbf{A}\mathbf{x}=\mathbf{y}\) tiene infinitas soluciones mínimos cuadrados (coinciden con las soluciones del sistema de ecuaciones normales).</p
+</li>
+</ol>
+<p>El vector \(\widehat{\mathbf{y}} \doteq \text{Proy}_{\text{Col}(\mathbf{A})}(\mathbf{y})=\mathbf{A}\widehat{\mathbf{x}}\) se denomina <strong>vector de observaciones ajustadas</strong>.</p>
+<hr>
+<p>Observar que las siguientes afirmaciones son equivalentes:</p>
+<ul>
+<li><p>El sistema \(\mathbf{A}\mathbf{x}=\mathbf{y}\) tiene una única solución mínimos cuadrados.</p>
+</li>
+<li><p>La matriz \(\mathbf{A}^{T}\mathbf{A} \in \mathbb{R}^{n \times n}\) es definida positiva.</p>
+</li>
+<li><p>El único elemento del espacio nulo es el vector cero (\(\text{dim}(\text{Nul}(\mathbf{A}))={0}\)).</p>
+</li>
+<li><p>Los vectores columnas de \(\mathbf{A}\) son linealmente independientes.</p>
+</li>
+<li><p>\(\text{rango}(\mathbf{A})=n\).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="soluci-n-norma-m-nima-de-un-sistema-de-ecuaciones-lineales-compatible-indeterminado">Solución norma mínima de un sistema de ecuaciones lineales compatible indeterminado</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Consideramos el sistema \(\mathbf{A}\mathbf{x}=\mathbf{y}\), con \(\mathbf{A} \in \mathbb{R}^{m \times n}\) tal que \(\text{rango}(\mathbf{A})=m&lt;n\).
+En esta situación:</p>
+<ul>
+<li><p>El sistema \(\mathbf{A}\mathbf{x}=\mathbf{y}\) es compatible y tiene infinitas soluciones:</p>
+</li>
+<li><p>\(\mathbf{A}\mathbf{A}^{T}\) es definida positiva.</p>
+</li>
+</ul>
+<p>Buscamos, entre las infinitas soluciones del sistema compatible indeterminado \(\mathbf{A}\mathbf{x}=\mathbf{y}\) la solución de norma más pequeña. </p>
+<hr>
+<p>La solución norma mínima del sistema compatible indeterminado \(\mathbf{A}\mathbf{x}=\mathbf{y}\) es:</p>
+<p>$$
+\widehat{\mathbf{x}}=\mathbf{A}^{+}\mathbf{y}
+$$</p>
+<p>con \(\mathbf{A}^{+}=\mathbf{A}^{T}(\mathbf{A}\mathbf{A}^{T})^{-1}\). Esta solución es única.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="matriz-pseudoinversa">Matriz Pseudoinversa</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>El concepto de pseudoinversa de una matriz es una generalización del concepto usual de inversa para matrices cuadradas.
+<p>Sea \(\mathbf{A}\in\mathbb{R}^{m\times n}\). Si \(\mathbf{A}^{+}\in\mathbb{R}^{n\times m}\) es una matriz tal que:</p>
+<ol>
+<li><p>\(\mathbf{A}\mathbf{A}^{+}\mathbf{A}=\mathbf{A}\)</p>
+</li>
+<li><p>\(\mathbf{A}^{+}\mathbf{A}\mathbf{A}^{+}=\mathbf{A}^{+}\)</p>
+</li>
+<li><p>\(\mathbf{A}\mathbf{A}^{+}\) es simétrica</p>
+</li>
+<li><p>\(\mathbf{A}^{+}\mathbf{A}\) es simétrica</p>
+</li>
+</ol>
+<p>se dice que \(\mathbf{A}^{+}\) es la matriz pseudoinversa de \(\mathbf{A}\) (o inversa de Moore-Penrose).</p>
+<hr>
+<p>Toda matriz \(\mathbf{A}\in\mathbb{R}^{m\times n}\) tiene pseudoinversa y, además, ésta es única.</p>
+<hr>
+<p>La pseudoinversa se puede calcular a partir de la <a href="svd.html">Descomposción en Valores Singulares</a>. Si</p>
+<p>$$
+\mathbf{A} = \mathbf{U}\mathbf{S}\mathbf{V}^T
+$$</p>
+<p>entonces</p>
+<p>$$
+\mathbf{A}^{+} = \mathbf{V}\mathbf{S}^{*}\mathbf{U}^T
+$$</p>
+<p>donde \(\mathbf{S}^{*}\) se forma a partir de \(S\) tomando el recíproco de todos los elementos distintos de cero, dejando todos los ceros solos y haciendo que la matriz tenga la forma correcta:
+Si \(S\) es una  matriz de \(m \times n\), entonces \(\mathbf{S}^{*}\) debe ser una matriz de \(n \times m\).
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="smcnm">Solución mínimos cuadrados-norma mínima</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Todo sistema de ecuaciones lineales \(\mathbf{A}\mathbf{x}=\mathbf{y}\) tiene:</p>
+<ul>
+<li>una única solución mínimos cuadrados-norma mínima, \(\mathbf{x}_{0}=\mathbf{A}^{+}\mathbf{y}\).</li>
+<li>al menos una solución mínimos cuadrados.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="packageLicense" class="cc cc-by-sa"></div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="imagen_circunferencia.html" class="prev"><span><span>&laquo; </span>Anterior</span></a>
+</nav>
+</div>
+</div>
+</body></html>

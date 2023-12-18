@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Mínimos Cuadrados Ordinarios | PID </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="MBM" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.8.1 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+<body class="exe-web-site" id="exe-node-3"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">Matemáticas útiles: conceptos y aplicaciones</div></header>
+<nav id="siteNav">
+<ul>
+   <li id="active"><a href="index.html" class="active daddy main-node">Inicio</a></li>
+   <li><a href="imagen_circunferencia.html" class="no-ch">Imagen de una Circunferencia por una Aplicación Lineal</a></li>
+   <li><a href="curvas.html" class="no-ch">Curvas paramétricas en el plano</a></li>
+   <li><a href="svd.html" class="no-ch">Descomposición en valores singulares</a></li>
+   <li><a href="mnimos_cuadrados_ordinarios2.html" class="no-ch">Mínimos Cuadrados Ordinarios</a></li>
+   <ul>
+   		<li><a href="Ejemplo_MMCC.html" class="no-ch">Ejemplo: Aplicación de Mínimos Cuadrados Ordinarios</a></li>
+   </ul>
+   <li><a href="repaso_de_lgebra_matricial.html" class="no-ch">Repaso de Álgebra Matricial</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="repaso_de_lgebra_matricial.html" class="prev"><span><span>&laquo; </span>Anterior</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="m-nimos-cuadrados-aplicados-a-datos-reales-an-lisis-de-tendencias-en-series-clim-ticas">Mínimos cuadrados aplicados a datos reales: Análisis de tendencias en series climáticas</h1></header>
+
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle" id="planteamiento-del-problema2">Planteamiento del problema</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_122_2" class="block iDevice_content">
+<div class="exe-text"></div>
+<p>Consideramos una serie de <a href="global_temperature.csv">datos</a> sobre la temperatura global del planeta a lo largo del tiempo (<a href="https://www.ncdc.noaa.gov/cdo-web/datasets">fuente NOAA</a>).</p>
+<p>Calculamos la tendencia de la temperatura media global aplicando el método de mínimos cuadrados:</p>
+<ol>
+<li><p>Regresión lineal simple.</p>
+<p>El modelo matemático viene dado por:</p>
+<p>$$
+y(t_i) =a·t_i+b
+$$</p>
+<p>siendo \(t_i\) el tiempo (en años), \(y(t_i)\) la temperatura (en ºC) y, en este caso, las incógnitas \(a\) y \(b\) denotan las incógnitas. Expresado matricialmente:</p>
+<p>$$
+\mathbf{y} = \mathbf{Ax}
+$$</p>
+<p>con \(\mathbf{y}\) el vector columna \(m\)-dimensional de observación; \(\mathbf{x}\) el vector 2-dimensional de incógnitas y la matriz de coeficientes \(\mathbf{A}\) de tamaño \(m\times 2\), contiene en su primera columna el vector de tiempos y es la segunda un vector de unos. Podemos calcular la solución mínimos cuadrados a partir de: </p>
+<ul>
+<li>Calculando, la solución del sistema de ecuaciones normales asociado (ver <a href="mnimos_cuadrados_ordinarios2.html">mínimos cuadrados ordinarios</a>):</li>
+</ul>
+<p>$$
+\mathbf{ \widehat{x}=(A&#39;A)^{-1}A&#39;y}
+$$</p>
+<ul>
+<li>Calculando la pseudoinversa mediante la <a href="svd.html">Descomposición el Valores singulares</a>.</li>
+</ul>
+</li>
+<li><p>Regresión lineal múltiple.</p>
+<p>Consideramos el modelo</p>
+<p>$$
+y(t_i) =a·(t_i)^2+b·t_i+c
+$$</p>
+<p>En este caso la matriz de coeficientes \(\mathbf{A}\) tendrá tamaño \(m\times 3\) siendo \(n=3\) el número de incógnitas.</p>
+</li>
+</ol>
+<hr>
+<p><a href="global_temperature.csv">Fichero de datos.</a></p>
+<p><a href="regression.ipynb">Solución (código Python).</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="packageLicense" class="cc cc-by-sa"></div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="imagen_circunferencia.html" class="prev"><span><span>&laquo; </span>Anterior</span></a>
+</nav>
+</div>
+</div>
+</body></html>
